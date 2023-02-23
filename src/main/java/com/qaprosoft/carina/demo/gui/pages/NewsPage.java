@@ -25,6 +25,9 @@ import com.qaprosoft.carina.core.gui.AbstractPage;
 import com.qaprosoft.carina.demo.gui.components.NewsItem;
 
 public class NewsPage extends AbstractPage {
+
+    @FindBy(className = "article-info-name")
+    private ExtendedWebElement newsPageTitle;
     
     @FindBy(className="searchFor")
     private ExtendedWebElement searchTextField;
@@ -45,5 +48,8 @@ public class NewsPage extends AbstractPage {
         searchButton.click();
         return news;
     }
-    
+
+    public boolean isPageOpened() {
+        return newsPageTitle.isElementPresent();
+    }
 }

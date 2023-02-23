@@ -15,15 +15,13 @@
  */
 package com.qaprosoft.carina.demo.gui.components;
 
+import com.qaprosoft.carina.demo.gui.pages.*;
 import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
 import com.qaprosoft.carina.core.gui.AbstractUIObject;
-import com.qaprosoft.carina.demo.gui.pages.CompareModelsPage;
-import com.qaprosoft.carina.demo.gui.pages.HomePage;
-import com.qaprosoft.carina.demo.gui.pages.NewsPage;
 
 public class FooterMenu extends AbstractUIObject {
     @FindBy(linkText = "Home")
@@ -35,8 +33,74 @@ public class FooterMenu extends AbstractUIObject {
     @FindBy(linkText = "News")
     private ExtendedWebElement newsLink;
 
+    @FindBy(xpath = "//div[@class = 'footer-inner']//a[contains(text(),'Blog')]")
+    private ExtendedWebElement blogLink;
+
+    @FindBy(xpath = "//div[@class = 'footer-inner']//a[contains(text(),'Phone Finder')]")
+    private ExtendedWebElement phoneFinderLink;
+
+    @FindBy(xpath = "//div[@class = 'footer-inner']//a[contains(text(),'Tools')]")
+    private ExtendedWebElement toolsLink;
+
+    @FindBy(xpath = "//div[@class = 'footer-inner']//a[contains(text(),'Coverage')]")
+    private ExtendedWebElement coverageLink;
+
+    @FindBy(xpath = "//div[@class = 'footer-inner']//a[contains(text(),'Glossary')]")
+    private ExtendedWebElement glossaryLink;
+
+    @FindBy(xpath = "//div[@class = 'footer-inner']//a[contains(text(),'Contact us')]")
+    private ExtendedWebElement contactUsLink;
+
+    @FindBy(xpath = "//div[@class = 'footer-inner']//a[contains(text(),'Review')]")
+    private ExtendedWebElement reviewLink;
+
     public FooterMenu(WebDriver driver, SearchContext searchContext) {
         super(driver, searchContext);
+    }
+
+    public boolean isBlogLinkPresent() {
+        blogLink.scrollTo();
+        return blogLink.isElementPresent();
+    }
+
+    public boolean isPhoneFinderLinkPresent() {
+        phoneFinderLink.scrollTo();
+        return phoneFinderLink.isElementPresent();
+    }
+
+    public boolean isToolsLinkPresent() {
+        toolsLink.scrollTo();
+        return toolsLink.isElementPresent();
+    }
+
+    public boolean isCoverageLinkPresent() {
+        coverageLink.scrollTo();
+        return coverageLink.isElementPresent();
+    }
+
+    public boolean isGlossaryLinkPresent() {
+        glossaryLink.scrollTo();
+        return glossaryLink.isElementPresent();
+    }
+
+    public boolean isContactUsLinkPresent() {
+        contactUsLink.scrollTo();
+        return contactUsLink.isElementPresent();
+    }
+
+    public boolean isCompareLinkPresent() {
+        compareLink.scrollTo();
+        return compareLink.isElementPresent();
+    }
+
+    public boolean isNewsButtonPresent() {
+        newsLink.scrollTo();
+        return newsLink.isElementPresent();
+    }
+
+    public boolean isReviewButtonPresent() {
+        reviewLink.scrollTo();
+        return reviewLink.isElementPresent();
     }
 
     public HomePage openHomePage() {
@@ -44,13 +108,57 @@ public class FooterMenu extends AbstractUIObject {
         return new HomePage(driver);
     }
 
-    public CompareModelsPage openComparePage() {
+    public ComparePage openComparePage() {
+        compareLink.scrollTo();
         compareLink.click();
-        return new CompareModelsPage(driver);
+        return new ComparePage(driver);
     }
-    
+
     public NewsPage openNewsPage() {
+        newsLink.scrollTo();
         newsLink.click();
         return new NewsPage(driver);
+    }
+
+    public BlogPage openBlogPage() {
+        blogLink.scrollTo();
+        blogLink.click();
+        return new BlogPage(driver);
+    }
+
+    public ContactUsPage openContactUsPage() {
+        contactUsLink.scrollTo();
+        contactUsLink.click();
+        return new ContactUsPage(driver);
+    }
+
+    public CoveragePage openCoveragePage() {
+        coverageLink.scrollTo();
+        coverageLink.click();
+        return new CoveragePage(driver);
+    }
+
+    public GlossaryPage openGlossaryPage() {
+        glossaryLink.scrollTo();
+        glossaryLink.click();
+        return  new GlossaryPage(driver);
+    }
+
+    public PhoneFinderPage openPhoneFinderPage() {
+        phoneFinderLink.scrollTo();
+        phoneFinderLink.click();
+        return new PhoneFinderPage(driver);
+    }
+
+    public ReviewPage openReviewPage() {
+        reviewLink.scrollTo();
+        reviewLink.click();
+        return new ReviewPage(driver);
+    }
+
+    public ToolsPage openToolsPage() {
+        toolsLink.scrollTo();
+        toolsLink.click();
+        return new ToolsPage(driver);
     }
 }
